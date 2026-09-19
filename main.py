@@ -181,8 +181,7 @@ def monitor_schedule(session):
 # 6. دورة التشغيل (التي ستعمل على سيرفرات جيت هاب)
 # ==========================================
 if __name__ == "__main__":
-    send_telegram_alert("🚀 *بدأ تشغيل بوت مراقبة الجدول على سيرفرات جيت هاب...*")
-    
+# send_telegram_alert("🚀 *بدأ تشغيل بوت مراقبة الجدول على سيرفرات جيت هاب...*")    
     while True:
         active_session = get_dulms_session()
         
