@@ -1,0 +1,31 @@
+name: DULMS Sniper Bot
+
+on:
+  workflow_dispatch: # زر التشغيل اليدوي
+  schedule:
+    - cron: '0 */6 * * *' # تشغيل تلقائي كل 6 ساعات
+
+jobs:
+  run-sniper:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
+
+    - name: Install dependencies
+      run: |
+        pip install selenium requests webdriver-manager
+
+    - name: Run Sniper Bot
+      env:
+        STUDENT_ID: ${{ secrets.STUDENT_ID }}
+        STUDENT_PASS: ${{ secrets.STUDENT_PASS }}
+        BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+        CHAT_ID: ${{ secrets.CHAT_ID }}
+      run: python main.py
